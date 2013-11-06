@@ -154,7 +154,7 @@ class data {
       'msg'    => l::get('pages.errors.notfound')
     );
 
-    if($num === $p->num()) return array(
+    if($num == $p->num()) return array(
       'status' => 'success',
       'msg'    => l::get('nochanges')
     );
@@ -440,9 +440,9 @@ class data {
   static function updateInfo() {
     
     if(c::get('lang.support')) {
-      $file = c::get('root.content') . '/site.' . c::get('lang.current') . '.' . c::get('content.file.extension', 'txt');    
+      $file = c::get('root.content') . '/site.' . c::get('lang.current') . '.' . c::get('content.file.extension', 'md');    
     } else {
-      $file = c::get('root.content') . '/site.' . c::get('content.file.extension', 'txt');        
+      $file = c::get('root.content') . '/site.' . c::get('content.file.extension', 'md');        
     }
     $keys = self::siteData();
     $data = array();
@@ -458,7 +458,7 @@ class data {
   
     // remove the file without language code    
     if(c::get('lang.support') && c::get('lang.current') == c::get('lang.default')) {
-      $remove = c::get('root.content') . '/site.' . c::get('content.file.extension', 'txt');
+      $remove = c::get('root.content') . '/site.' . c::get('content.file.extension', 'md');
       if(file_exists($remove)) f::remove($remove);
     }
 
